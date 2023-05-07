@@ -1,0 +1,12 @@
+[submodule "api-auth"]
+	path = api-auth
+	url = git@github.com:board-n-go/api-auth.git
+[submodule "api-gears"]
+	path = api-gears
+	url = git@github.com:board-n-go/api-gears.git
+[submodule "api-license"]
+	path = api-license
+	url = git@github.com:board-n-go/api-license.git
+[submodule "api-events"]
+	path = api-events
+	url = git@github.com:board-n-go/api-events.git
