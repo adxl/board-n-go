@@ -1,0 +1,56 @@
+#! /bin/bash
+
+function run_action() {
+  if [ "$1" = "start" ]; then
+    docker compose -p $2_api -f api-$2/docker-compose.yaml up -d
+  else
+    docker compose -p $2_api -f api-$2/docker-compose.yaml down
+  fi
+}
+
+if [ "$1" = "start" ]; then
+  docker network ls | grep bng > /dev/null || docker network create bng
+  docker compose -p gateway -f gateway/docker-compose.yaml up -d
+
+  if [ "$2" = "all" ]; then
+    run_action "start" "auth"
+    run_action "start" "events"
+    run_action "start" "exams"
+    run_action "start" "gears"
+  exit 1
+  fi
+
+elif [ "$1" = "stop" ]; then
+  if [ "$2" = "all" ]; then
+    run_action "stop" "auth"
+    run_action "stop" "events"
+    run_action "stop" "exams"
+    run_action "stop" "gears"
+    docker compose -p gateway -f gateway/docker-compose.yaml down
+    docker network rm -f bng
+    exit 1
+  fi
+else
+  Usage: $0 start|stop service_1 [service_2 ...]
+  exit 1
+fi
+
+for word in "$@"; do
+  case $word in
+    "auth")
+      run_action "$1" "auth"
+      ;;
+    "events")
+      run_action "$1" "events"
+      ;;
+    "exams")
+      run_action "$1" "exams"
+      ;;
+    "gears")
+      run_action "$1" "gears"
+      ;;
+    *)
+      continue
+      ;;
+  esac
+done
