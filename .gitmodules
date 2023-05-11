@@ -10,3 +10,6 @@
 [submodule "api-events"]
 	path = api-events
 	url = git@github.com:adxl/bng-api-events.git
+[submodule "gateway"]
+	path = gateway
+	url = git@github.com:adxl/bng-gateway.git
