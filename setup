@@ -4,4 +4,3 @@ cp api-auth/.env.local api-auth/.env
 cp api-events/.env.local api-events/.env
 cp api-exams/.env.local api-exams/.env
 cp api-gears/.env.local api-gears/.env
-cp gateway/.env.local gateway/.env
