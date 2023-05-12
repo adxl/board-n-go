@@ -8,7 +8,13 @@
 git clone --recurse-submodules git@github.com:adxl/board-n-go.git bng
 ```
 
-2 - Lancer les services:  
+2 - Initialiser les environnements:  
+
+```bash
+./setup
+```
+
+3 - Lancer les services:  
 
 ```bash
 ./runner start all
@@ -22,7 +28,7 @@ ou des services en particulier :
 
 _(valeurs possibles : `auth`, `events`, `exams`, `gears`)_
 
-3 - Stopper les services:  
+4 - Stopper les services:  
 
 ```bash
 ./runner stop all
