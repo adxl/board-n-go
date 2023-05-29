@@ -1,0 +1,51 @@
+#! /bin/bash
+
+run_service() {
+  export $(grep -v '^#' "$2/.env" | xargs -d '\n')
+
+  if [[ "$1" != "gateway" ]]; then
+    docker compose -f "$2/docker-compose.yaml" up "$1-db-service" -d
+  fi
+
+  cd $2 && npm run start:dev
+}
+
+# TODO:
+# stop_service() {
+#   if [[ -f "$1/.env" ]]; then
+#     unset $(grep -v '^#' "$1/.env" | sed -E 's/(.*)=.*/\1/' | xargs)
+#   else
+#     echo ".env error"
+#     exit 1
+#   fi
+# }
+
+if [ "$1" = "start" ]; then
+  docker network ls | grep bng > /dev/null || docker network create bng
+else
+  echo "Usage: $0 start service_name"
+  exit 1
+fi
+
+for word in "$@"; do
+  case $word in
+    "gateway")
+      run_service "gateway" "gateway"
+      ;;
+    "auth")
+      run_service "auth" "api-auth"
+      ;;
+    "events")
+      run_service "events" "api-events"
+      ;;
+    "exams")
+      run_service "exams" "api-exams"
+      ;;
+    "gears")
+      run_service "gears" "api-gears"
+      ;;
+    *)
+      continue
+      ;;
+  esac
+done
