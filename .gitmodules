@@ -13,3 +13,6 @@
 [submodule "gateway"]
 	path = gateway
 	url = git@github.com:adxl/bng-gateway.git
+[submodule "app"]
+	path = app
+	url = git@github.com:adxl/bng-app.git

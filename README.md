@@ -32,7 +32,7 @@ ou des services en particulier :
 ./runner start service_1 service_2 service_3 etc
 ```
 
-_(valeurs possibles : `auth`, `events`, `exams`, `gears`)_
+_(valeurs possibles : `app`, `auth`, `events`, `exams`, `gears`)_
 
 4 - Stopper les services:
 
@@ -46,5 +46,5 @@ ou des services en particulier :
 ./runner stop service_1 service_2 service_3 etc
 ```
 
-_(valeurs possibles : `auth`, `events`, `exams`, `gears`)_  
+_(valeurs possibles : `app`, `auth`, `events`, `exams`, `gears`)_  
 _Note: seule la commande `stop all` permet de stopper la gateway et supprime le network_
