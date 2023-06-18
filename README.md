@@ -48,3 +48,17 @@ ou des services en particulier :
 
 _(valeurs possibles : `app`, `auth`, `events`, `exams`, `gears`)_  
 _Note: seule la commande `stop all` permet de stopper la gateway et supprime le network_
+
+## How to use
+
+En utilisant la version docker (par défaut),
+les services sont accessible comme suit:
+
+- Gateway : [http://localhost:9000]( http://localhost:9000 )
+- Auth API : [http://localhost:9000/auth]( http://localhost:9000/auth)
+- Events API : [http://localhost:9000/events]( http://localhost:9000/events)
+- Exams API : [http://localhost:9000/exams]( http://localhost:9000/exams)
+- Gears API : [http://localhost:9000/gears]( http://localhost:9000/gears)
+
+Pour des raisons de sécurité, il est nécessaire de passer le
+header `X-BNG-KEY=esgi`
