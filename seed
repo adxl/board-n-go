@@ -1,0 +1,12 @@
+#! /bin/bash
+
+./runner start auth events exams gears
+
+docker exec bng-api-auth-auth-api-service-1 npm run seed
+docker exec bng-api-events-events-api-service-1 npm run seed
+docker exec bng-api-exams-exams-api-service-1 npm run seed
+docker exec bng-api-gears-gears-api-service-1 npm run seed
+
+echo "*****************************"
+echo "All services have been seeded"
+echo "*****************************"

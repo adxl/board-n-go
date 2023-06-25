@@ -1,0 +1,39 @@
+#! /bin/bash
+
+./runner stop all
+
+echo "*****************"
+echo "Testing Auth API"
+echo "*****************"
+
+cd api-auth && npm run test && cd ..
+
+#
+
+echo "******************"
+echo "Testing Events API"
+echo "******************"
+
+cd api-events && npm run test && cd ..
+
+#
+
+echo "*****************"
+echo "Testing Exams API"
+echo "*****************"
+
+cd api-exams && npm run test && cd ..
+
+#
+
+echo "*****************"
+echo "Testing Gears  API"
+echo "*****************"
+
+cd api-Gears && npm run test && cd ..
+
+#
+
+echo "*****************************"
+echo "All services have been tested"
+echo "*****************************"
